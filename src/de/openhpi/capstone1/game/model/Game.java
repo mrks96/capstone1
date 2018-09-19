@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.Point;
 
-import de.openhpi.capstone1.game.model.Subject;
+import de.openhpi.capstone1.game.model.ISubject;
 import de.openhpi.capstone1.game.view.Observer;
 
-public class Game implements Subject {
+public class Game implements ISubject {
 
 	private List<Observer> observers = new ArrayList<Observer>();
 	
@@ -18,10 +18,10 @@ public class Game implements Subject {
 	private int widthGame;
 	private int heightGame;
 
-	public Game(int lengthPadle, widthGame, heightGame){
+	public Game(int lengthPadle, int widthGame, int heightGame){
 		this.lengthPadle = lengthPadle;
 		this.widthGame = widthGame;
-		this.heightGame = heightGame
+		this.heightGame = heightGame;
 	}
 	
 	public void updateGame() {
@@ -37,7 +37,7 @@ public class Game implements Subject {
 	@Override
 	public void notifyAllObservers() {
 		for (Observer observer : observers) {
-			observer.update();
+			observer.update(0); //TODO: Hier aendern!
 		}
 	}
 	
@@ -55,7 +55,9 @@ public class Game implements Subject {
 			velocityBall.setLocation(-1*velocityBall.getX(),velocityBall.getY());
 		}
 		
-		else if (positionBall.getX() >= widthGame)
+		else if (positionBall.getX() >= widthGame) {
+			
+		}
 			
 
 	}	

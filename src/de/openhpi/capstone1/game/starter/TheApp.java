@@ -2,14 +2,14 @@ package de.openhpi.capstone1.game.starter;
 
 
 import de.openhpi.capstone1.game.controller.GameController;
-import de.openhpi.capstone1.game.model.game;
+import de.openhpi.capstone1.game.model.Game;
 import de.openhpi.capstone1.game.view.GameView;
 import de.openhpi.capstone1.game.view.Observer;
 import processing.core.PApplet;
 
 public class TheApp extends PApplet {
 
-	private Observer GameView;
+	private Observer gameView;
 	private GameController gameController;
 	private Game game;
 	private int widthGame;
@@ -22,14 +22,14 @@ public class TheApp extends PApplet {
 		widthGame = 200;
 		heightGame = 200;
 		lengthPadle = 50;
-		size(widthGame, lengthGame);
+		size(widthGame, heightGame);
 	}
 
 	@Override
 	public void setup() {  // setup() runs once
 		frameRate(30);
 		game = new Game(lengthPadle, widthGame, heightGame);
-		gameController = new gameController(game);
+		gameController = new GameController(game);
 		gameView = new GameView(this, game);
 	}
 
@@ -39,6 +39,6 @@ public class TheApp extends PApplet {
 	
 	@Override
 	public void mouseClicked() {
-		GameController.handleEvent();
+		gameController.handleEvent();
 	}
 }
